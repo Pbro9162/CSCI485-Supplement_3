@@ -5,6 +5,7 @@ public class UnitTest1
     [Fact]
     public void Test1()
     {
-        FileFuncs.CreateAsciiFile("example.txt", "This is an ascii file.");
+        FileFuncs.CreateBinaryFile("binaryTest.bin", "This is a binary file.");
+        
     }
 }
