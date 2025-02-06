@@ -51,4 +51,39 @@ public class FileFuncs
 
         return fileBytes;
     }
+
+    public static string GenerateString(int stringLength) 
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        Random random= new Random();
+
+        return new string(Enumerable.Repeat(chars, stringLength)
+                                    .Select(s => s[random.Next(s.Length)])
+                                    .ToArray());
+    }
+
+    public static void CompareFiles(string fileText)
+    {
+        CreateAsciiFile("ASCII_File.txt", fileText);
+        CreateBinaryFile("Binary_File.bin", fileText);
+
+        string f1 = "ASCII_File.txt", 
+        f2 = "Binary_File.bin";
+
+        long asciiFileSize = GetFileSize(f1);
+        long binaryFileSize = GetFileSize(f2);
+
+        if (asciiFileSize > binaryFileSize) {
+            Console.WriteLine("ASCII File is bigger");
+        }
+        else if (asciiFileSize < binaryFileSize) 
+        {
+            Console.WriteLine("Binary File is bigger");
+        }
+        else 
+        {
+            Console.WriteLine("The files are equal size");
+        }
+
+    }
 }
